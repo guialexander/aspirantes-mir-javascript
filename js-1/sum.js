@@ -1,6 +1,6 @@
 function suma (np)
 {
-    let cont=0
+    var cont=0
 for (i=1;i<=np;i++){
     cont =cont + i;
 
