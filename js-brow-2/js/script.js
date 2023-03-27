@@ -96,6 +96,7 @@ function tareasC(aux1){
     setTimeout(() => {
         tcompletada.remove();
     }, 10000);
+    
 }
 
 function nuevatarea(mensaje){
