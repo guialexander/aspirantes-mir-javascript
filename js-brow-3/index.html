@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage</title>
+</head>
+<body>
+<form>
+      <label for="name">Ingresa tu nombre</label>
+      <input type="text" id="name" name="name" placeholder="Ingresa tu nombre">
+      <label for="name">Ingresa tu email</label>
+      <input type="text" id="email" name="name" placeholder="Ingresa tu email"><br><br>
+      <button type="submit">Guardar en localStorage</button><br><br>
+      
+</form>
+<button type="submit" id="boton2">Borrar localStorage</button>
+
+    <section></section>
+    <script >
+
+
+      // Obtener elementos del DOM
+      const form = document.querySelector('form');
+      const bot2=document.querySelector("#boton2")
+      const input = document.querySelector('input');
+      const input2 = document.querySelector('#email');
+      const section = document.querySelector('section');
+      const agguardado=document.createElement("p");
+      const bonus=document.createElement("p");
+
+      
+
+      //creando el objeto:
+      let persona= {
+        nombre:"local storage",
+        email: "prueba@gmail.comm",
+      };
+
+      
+      // Manejar el evento de enviar el formulario
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+         const mensaje = input.value.toUpperCase();
+         const mensaje2 = input2.value.toUpperCase();
+         persona.email=mensaje2;
+         localStorage.setItem("mensaje",mensaje);
+        localStorage.setItem("mensaje2",JSON.stringify(persona));
+       
+        });
+
+      // function borrar localstorage
+
+      bot2.addEventListener('click',(event)=>{
+        console.log("funciona el boton");
+        deleteName();
+
+      })
+
+      // Función para mostrar el nombre guardado en localStorage
+      function showName() {
+        // revisamos si hay algo en localStorage
+        if(localStorage.getItem("mensaje")){  
+            let guardado=localStorage.getItem("mensaje");
+            agguardado.textContent=("ejercicio 1:  " +guardado);  
+            section.appendChild(agguardado);
+            
+          }else{
+          
+              agguardado.textContent=("No hay entradas en Local Storage Ejercicio Uno");
+              section.appendChild(agguardado);
+        }
+
+        if(localStorage.getItem("mensaje2")){
+          
+
+
+        }
+
+      }
+
+      // Función para borrar el nombre guardado en localStorage
+      function deleteName() {
+        localStorage.clear();
+      }
+
+      //Bonus funtion
+
+      function bonus1(){
+        if(localStorage.getItem("mensaje2")){
+        let guardado2=localStorage.getItem("mensaje2");
+        console.log(guardado2);
+        bonus.textContent=("ejercicio Bonus " + guardado2);
+        section.appendChild(bonus);
+      }else{
+
+        bonus.textContent=("No hay entradas en Local Storage Bonus");
+        section.appendChild(bonus);
+
+      }
+             
+          
+
+      }
+
+      // Mostrar el nombre guardado al cargar la página
+      showName();
+      bonus1();
+
+
+    
+    </script>
+
+    
+</body>
+</html>l
