@@ -1,13 +1,22 @@
 const boton=document.querySelector(".btn");
 const btnD=document.querySelector(".btn2");
 const tabla11=document.querySelector(".div2");
-console.log(tabla11);
+const input=document.querySelector("#imput1");
+const resultado = document.querySelector('.table1');
+
+console.log(input);
+console.log(resultado);
+
 
 
 // boton add
 boton.addEventListener("click",function handleSubmit(evento){ 
     console.log("esta funcioanado");    
-     
+    const mensaje = input.value.toUpperCase(); // Código para convertir el texto a mayúsculas y mostrarlo en el párrafo
+    //resultado.textContent = texto;
+    nuevatarea(mensaje);   
+
+        
 } );
 
 // boton delete
@@ -87,9 +96,20 @@ function tareasC(aux1){
     setTimeout(() => {
         tcompletada.remove();
     }, 10000);
+}
 
-    
-    
+function nuevatarea(mensaje){
+
+    let erInput = document.createElement('INPUT');
+    erInput.setAttribute("type","checkbox");
+
+
+    const agregar_tarea=document.createElement("td");
+      
+    agregar_tarea.textContent=(mensaje);       
+    console.log(agregar_tarea);
+    resultado.appendChild(erInput);
+    resultado.appendChild(agregar_tarea);
 
 }
 
